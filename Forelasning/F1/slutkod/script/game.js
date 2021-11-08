@@ -6,33 +6,6 @@
     <img src="https://openclipart.org/download/282128/Die2.svg" />
     <img src="https://openclipart.org/download/282127/Die1.svg" />              
 */
-/*
-'use strict';
-
-addEventListener('load', function() {
-
-    console.log('load');
-
-    document.addEventListener('keydown', function(e) {
-        console.log('keydown');
-
-        if(e.key === 'd' || e.key === 'D') {
-            console.log('japp det är ett d!');
-        }
-
-    });    
-
-});
-*/
-
-/*
-    <img src="https://openclipart.org/download/282132/Die6.svg" />
-    <img src="https://openclipart.org/download/282131/Die5.svg" />
-    <img src="https://openclipart.org/download/282130/Die4.svg" />
-    <img src="https://openclipart.org/download/282129/Die3.svg" />
-    <img src="https://openclipart.org/download/282128/Die2.svg" />
-    <img src="https://openclipart.org/download/282127/Die1.svg" />              
-*/
 
 'use strict';
 let oGameData = {
