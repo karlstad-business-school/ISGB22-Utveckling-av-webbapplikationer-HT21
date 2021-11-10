@@ -17,7 +17,7 @@ let oGameData = {
         const PATH = 'https://openclipart.org/download/2821';
 
         let rndValue = 0;
-        let mainRef = document.querySelector('main');
+        let mainRef = $('main');
         let imgRef = null;
         let sum = 0;
 
@@ -26,15 +26,26 @@ let oGameData = {
             rndValue = Math.floor( Math.random() * 6) + 1;
             sum += rndValue;
 
-            imgRef = document.createElement('img');
+            //imgRef = document.createElement('img'); //...
+            imgRef = $('<img>');
 
-            imgRef.setAttribute('alt', 'Dice');
-            imgRef.setAttribute('src', PATH + (rndValue + 26) + '/Die' + rndValue + '.svg');
+            //imgRef.setAttribute('alt', 'Dice'); //...
+            //imgRef.setAttribute('src', PATH + (rndValue + 26) + '/Die' + rndValue + '.svg'); //...
 
-            imgRef.style.width = '10%';
-            imgRef.style.height = '10%';
+            imgRef.attr('alt', 'Dice');
+            imgRef.attr('src', PATH + (rndValue + 26) + '/Die' + rndValue + '.svg');
 
-            mainRef.appendChild(imgRef);
+            //alt. 
+            //imgRef.attr('alt', 'Dice').attr('src', PATH + (rndValue + 26) + '/Die' + rndValue + '.svg');
+            imgRef.attr({'alt' : 'Dice', 'src' : PATH + (rndValue + 26) + '/Die' + rndValue + '.svg' });
+
+            //imgRef.style.width = '10%';
+            //imgRef.style.height = '10%';
+            //imgRef.css('width','10%');
+            imgRef.css({'width' : '10%', 'height' : '10%'});
+
+            //mainRef.appendChild(imgRef);//...
+            imgRef.appendTo(mainRef);
 
             console.log(rndValue);
         }
@@ -46,6 +57,7 @@ let oGameData = {
         
         console.log('removeImgElements()');
 
+        /*
         let imgRefs = document.querySelectorAll('main img');
 
         console.log( imgRefs );
@@ -53,17 +65,19 @@ let oGameData = {
         for(let i=0; i < imgRefs.length; i++) {
             imgRefs.item(i).remove();
         }
+        */
+       $('main').empty();
 
     }
 
 };
 
-addEventListener('load', function() {
+//addEventListener('load', function() {
+$(document).ready( function() {
+    console.log('ready');
 
-    console.log('load');
-
-    document.addEventListener('keydown', function(e) {
-
+    //document.addEventListener('keydown', function(e) {
+    $(document).on('keydown', function(e) {
         console.log('keydown', e.key);
 
         if(e.key === 'd' || e.key === 'D') {
@@ -80,3 +94,6 @@ addEventListener('load', function() {
 
     window.alert('Tryck d-tangenten för att slumpa nya tärningar!');
 });
+        
+
+            
