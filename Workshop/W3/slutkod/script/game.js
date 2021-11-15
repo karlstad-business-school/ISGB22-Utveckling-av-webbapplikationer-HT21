@@ -26,7 +26,11 @@ function gameOver() {
         Hur löser du den buggen?
 
     */
-    imgRefs.remove();
+    imgRefs.off('mouseover');
+    imgRefs.slideUp('slow', function() {
+        imgRefs.remove();
+    });
+    
 
     oGameData.timerId = null;
     oGameData.antalKlickadSpoken = 0;
@@ -39,6 +43,11 @@ function gameOver() {
         'Du fångade ' + oGameData.antalKlickadSpoken + ' och totalt var det ' + oGameData.antalSpoken + ' spöken!'.
         Avsluta med att placera det nya h3-elementet först innanför body-elemetet.
     */
+
+    let h3Ref = $('<h3>');
+    h3Ref.text('Du fångade ' + oGameData.antalKlickadSpoken + ' och totalt var det ' + oGameData.antalSpoken + ' spöken!');
+    h3Ref.prependTo('body');
+
 
 }
 
@@ -54,10 +63,11 @@ $(document).ready(function() {
 
         if((e.key === 'b' || e.key === 'B') && oGameData.timerId === null) {
 
-            /*(
+            /*
                 3.
                 Från DOM:en ta bort det h3-elementet som eventuellt finns i body-elementet.
             */
+           $('body h3').remove();
 
             oGameData.timerId = setInterval(function() {
 
@@ -80,14 +90,26 @@ $(document).ready(function() {
                     c) Ändra css-egenskaperna width och height och ändra enheten till px istället för %.
                 */
 
-                let top = Math.round( Math.random() * ($(document).height() - imgRef.height() ) ) + 1;
-                let left = Math.round( Math.random() * ($(document).width() - imgRef.width() ) ) + 1;
+                let width = imgRef.width() - Math.round( imgRef.width() / 25) * oGameData.antalSpoken;
+                let height = imgRef.height() - Math.round( imgRef.height() / 25) * oGameData.antalSpoken;
+                
+                let top = Math.round( Math.random() * ($(document).height() - height ) ) + 1;
+                let left = Math.round( Math.random() * ($(document).width() - width ) ) + 1;
+
+                //let top = Math.round( Math.random() * ($(document).height() - imgRef.height() ) ) + 1;
+                //let left = Math.round( Math.random() * ($(document).width() - imgRef.width() ) ) + 1;
             
                 imgRef.css('position',  'absolute');
                 imgRef.css('left', left + 'px');
                 imgRef.css('top', top + 'px');
-                imgRef.css('width',  '15%');
-                imgRef.css('height', '15%');
+                //imgRef.css('width',  '15%');
+                //imgRef.css('height', '15%');
+                
+                imgRef.css({'height' : height + 'px'})
+                imgRef.css({'width' : width + 'px'})
+                
+
+                console.log(height, width);
 
                 /*
                     4.
@@ -95,6 +117,8 @@ $(document).ready(function() {
                     samma koordinater som det nya bildelementet. Ändra också så att pekarsymbolen blir kors när pekaren finns 
                     över det nya bildelementet.
                 */
+
+                imgRef.css({'z-index' : oGameData.antalSpoken, 'cursor' : 'crosshair'});    
 
                 imgRef.on('mouseover', function(e) {
                     oGameData.antalKlickadSpoken++;
@@ -108,7 +132,11 @@ $(document).ready(function() {
                         Vad händer om för pekaren fram och tillbaka över bildelementet under tiden det "försvinner"?
                         Hur löser du den buggen?
                     */
-                    $(this).remove();
+                    $(this).off('mouseover');
+                    $(this).fadeOut('slow', function() {
+                        $(this).remove();
+                    });    
+                    
                 });
 
                 let timerId = setTimeout(function() {
@@ -125,7 +153,12 @@ $(document).ready(function() {
                         Hur löser du den buggen?
 
                     */
-                    imgRef.remove();
+
+                    imgRef.animate({'left' : $(document).width(), 'top' : $(document).height()},
+                    1000, 'linear', function() {
+                         imgRef.remove();
+                    });    
+                   
 
                     if(oGameData.missadeSpoken === 3) {
                         console.log('Game Over!');
@@ -137,7 +170,8 @@ $(document).ready(function() {
                     Ändra så att bildelementets tid det visas blir kortare för varje nytt bildelement som skapas.
                 */
 
-                }, 3000);
+               //}, 3000);
+                }, 3000 - (oGameData.antalSpoken * 100));
 
                 imgRef.attr('data-timerid', timerId);
                 imgRef.appendTo('body');
@@ -148,7 +182,8 @@ $(document).ready(function() {
                     Högre svårighetsgrad på denna utmaningen!
                     Ändra så att intervallen mellan bildelementen blir kortare för varje nytt bildelement som skapas.
                 */
-            }, 1000);
+            //}, 1000);
+            }, 1000 - (oGameData.antalSpoken * 10));
         }
     });
 

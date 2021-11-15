@@ -17,10 +17,14 @@ let oGameData = {
             imgRef.attr({'alt' : 'Dice_' + i, 'src' : PATH + (i + 26) + '/Die' + i + '.svg' });
             imgRef.css({'width' : '10%', 'height' : '10%' });
 
-            /*
-                Fånga klick-händelsen och animera img-elementet genom att först göra bilden 100 pixalar större på en sekund och därefter
-                göra bilden 100 pixlar mindre på en sekund.
-            */
+            imgRef.on('click', function() {
+                $(this).animate({'width' : '+=100px', 'height' : '+=100px'}, 1000, 'swing', function() {
+                    console.log('Större bild...');
+                    $(this).animate({'width' : '-=100px', 'height' : '-=100px'}, 1000, 'swing', function() {
+                        console.log('Mindre bild...');
+                    });
+                });
+            });
 
             imgRef.appendTo(mainRef);
 
@@ -38,15 +42,11 @@ let oGameData = {
 
         imgRefs.each( function() {
 
-            /*
-                Animera aktuellt bildelement (slideUp()), slumpa nya siffror och ändra alt + src attributet för aktuellt 
-                och när animeringen har exekverat klart skall en ny animering köras (slideDown()) som visar bilder på de
-                nya tärningarna.
-            */
-            
-            rndValue = Math.floor( Math.random() * 6) + 1;
-            sum += rndValue;
-            $(this).attr({'alt' : 'Dice_' + rndValue, 'src' : PATH + (rndValue + 26) + '/Die' + rndValue + '.svg' });
+            $(this).slideUp( function() {
+                rndValue = Math.floor( Math.random() * 6) + 1;
+                sum += rndValue;
+                $(this).attr({'alt' : 'Dice_' + rndValue, 'src' : PATH + (rndValue + 26) + '/Die' + rndValue + '.svg' });
+            }).slideDown();
 
         });
 
@@ -69,3 +69,7 @@ $(document).ready( function() {
     });
 
     window.alert('Tryck d-tangenten för att slumpa nya tärningar!');
+});
+        
+
+            
