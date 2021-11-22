@@ -63,7 +63,32 @@ $(document).ready( function() {
         console.log('keydown', e.key);
 
         if(e.key === 'd' || e.key === 'D') {
+
+            
+            //Äldre typen av AJAX och "ren" JavaScript
+            /*
+            let oXMLHTTP = new XMLHttpRequest();
+
+            oXMLHTTP.onreadystatechange = function() {
+
+                console.log(oXMLHTTP.readyState);
+
+                if(oXMLHTTP.readyState === 4) {
+                    if(oXMLHTTP.status === 200) {
+                        //Ta hand om inkommande data och gör ngt med DOM:en!
+                        console.log('Allt ok');
+                    }
+                }
+
+            };
+
+            oXMLHTTP.open('GET', 'ajax/fetchDices.php?dice=dice', true);
+            oXMLHTTP.send();
+
+            */
+
             oGameData.randomDiceNumbers();
+
         }
 
     });
