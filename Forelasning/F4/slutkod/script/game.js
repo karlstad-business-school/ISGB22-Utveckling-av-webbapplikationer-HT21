@@ -87,6 +87,48 @@ $(document).ready( function() {
 
             */
 
+            //AJAX och jQuery (load(), get(), post() & getJSON)
+            /*
+            $('main').load('game.html main', function(data) {
+                console.log(data);
+            });
+
+            $.get('ajax/fetchDices.php?dice=dice', function(data) {
+                console.log(data);
+            });
+
+            //$.post();
+
+            $.getJSON('ajax/fetchDices.php', {'dice':'dice'}, function(data) {
+                console.log(data);
+            });
+
+            */
+
+            //jQuery och $.ajax()! Vill ni lära er en metod gör denna jobbet för er!
+            let oData = {
+                'method' : 'GET',
+                'url' : 'ajax/fetchDices.php',
+                'dataType' : 'json',
+                'timeout' : '3000',
+                'data' : {'dice' : 'dice'}
+            };
+            
+            let request = $.ajax(oData);
+
+            request.fail( function(jqXHR) {
+                //Ngt har gått fel...
+                console.log(jqXHR, jqXHR.status, jqXHR.statusText);
+            });
+
+            request.done( function(data) {
+                //Här funkar det bättre...
+                //Här modifierar ni DOM:en baserat på vad servern har skickat
+                //tillbaka i inkommande "data".
+                console.log(data);
+            }); 
+
+
             oGameData.randomDiceNumbers();
 
         }
