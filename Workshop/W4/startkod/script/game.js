@@ -5,6 +5,9 @@ let oGameData = {
     antalSpoken : 0,
     antalKlickadSpoken : 0,
     missadeSpoken : 0, 
+    imgPositions : null, //Nytt
+    imgHeight : 211, //Nytt
+    imgWidth : 400 //Nytt
 };
 
 function gameOver() {
@@ -23,17 +26,16 @@ function gameOver() {
         imgRefs.remove();
     });
     
+    let h3Ref = $('<h3>');
+    h3Ref.text('Du fångade ' + oGameData.antalKlickadSpoken + ' och totalt var det ' + oGameData.antalSpoken + ' spöken!');
+    h3Ref.prependTo('body');
 
     oGameData.timerId = null;
     oGameData.antalKlickadSpoken = 0;
     oGameData.antalSpoken = 0;
     oGameData.missadeSpoken = 0;
 
-
-    let h3Ref = $('<h3>');
-    h3Ref.text('Du fångade ' + oGameData.antalKlickadSpoken + ' och totalt var det ' + oGameData.antalSpoken + ' spöken!');
-    h3Ref.prependTo('body');
-
+    oGameData.imgPositions = null; //Nytt
 
 }
 
@@ -49,6 +51,21 @@ $(document).ready(function() {
 
         if((e.key === 'b' || e.key === 'B') && oGameData.timerId === null) {
 
+             //Observera att exemplet använder XAMPP-stacken och anropar ett PHP-script som returnerar ett objekt med 
+            //30 nästlade objekt.
+
+            /*
+                A.
+                1. Med .ajax()-metoden anropa filen, ajax/koordinater.php, med POST-metoden. Det du förväntas få i retur är json och
+                anropet får ta max 2 sekunder. Till servern skall du skicka docHeight som innehåller dokumentets höjd, docWidth som innehåller
+                dokumentets bredden, imgHeight som innehåller höjden på bilden du utgår från samt imgWidth som innehåller bredden för bilden
+                du utgår från.
+
+                2. Om .ajax() anropet går bra skall du till konsolen skriva ut 'done' och till imgPositions (som finns i det globala objektet)
+                tilldela returdata från servern. Du skall också flytta koden så att timer:n bara börjar vid ett done!
+
+                3. Om .ajax() anropet inte går bra skall du istället till konsolen skriva ut 'fail'.
+            */
 
            $('body h3').remove();
 
@@ -62,6 +79,27 @@ $(document).ready(function() {
                 imgRef.width('400px');
                 imgRef.height('211px');
 
+                //Nytt
+                /*
+                    B. 
+                    1. Skapa variablerna width, height, left och top.
+
+                    2. Till width-variabeln tilldela värdet som finns i width-egenskapen för aktuellt objekt i oGameData.imgPositions. 
+                    Aktuellt objekt är oGameData.totalGhosts och eftersom du kan behandla imgPostions som en "vektor" kan du använda 
+                    något i stil med globaltObjekt.objekt_med_egenskaper[globaltObjekt.egenskap_för_totalt_antal_spöken].egenskap;
+
+                    3. Till height-variabeln tilldela värdet som finns i height-egenskapen för aktuellt objekt i oGameData.imgPositions. 
+                    Aktuellt objekt är oGameData.totalGhosts och eftersom du kan behandla imgPostions som en "vektor" kan du använda 
+                    något i stil med globaltObjekt.objekt_med_egenskaper[globaltObjekt.egenskap_för_totalt_antal_spöken].egenskap;
+
+                    4. Till left-variabeln tilldela värdet som finns i left-egenskapen för aktuellt objekt i oGameData.imgPositions. 
+                    Aktuellt objekt är oGameData.totalGhosts och eftersom du kan behandla imgPostions som en "vektor" kan du använda 
+                    något i stil med globaltObjekt.objekt_med_egenskaper[globaltObjekt.egenskap_för_totalt_antal_spöken].egenskap;
+
+                    5. Till top-variabeln tilldela värdet som finns i top-egenskapen för aktuellt objekt i oGameData.imgPositions. 
+                    Aktuellt objekt är oGameData.totalGhosts och eftersom du kan behandla imgPostions som en "vektor" kan du använda 
+                    något i stil med globaltObjekt.objekt_med_egenskaper[globaltObjekt.egenskap_för_totalt_antal_spöken].egenskap;
+                */
 
                 let width = imgRef.width() - Math.round( imgRef.width() / 25) * oGameData.antalSpoken;
                 let height = imgRef.height() - Math.round( imgRef.height() / 25) * oGameData.antalSpoken;
