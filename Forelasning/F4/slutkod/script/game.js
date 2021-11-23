@@ -85,10 +85,11 @@ $(document).ready( function() {
             oXMLHTTP.open('GET', 'ajax/fetchDices.php?dice=dice', true);
             oXMLHTTP.send();
 
-            */
+            
 
             //AJAX och jQuery (load(), get(), post() & getJSON)
-            /*
+            
+            
             $('main').load('game.html main', function(data) {
                 console.log(data);
             });
@@ -106,28 +107,34 @@ $(document).ready( function() {
             */
 
             //jQuery och $.ajax()! Vill ni lära er en metod gör denna jobbet för er!
-            let oData = {
+
+            let request = $.ajax({
                 'method' : 'GET',
                 'url' : 'ajax/fetchDices.php',
                 'dataType' : 'json',
                 'timeout' : '3000',
                 'data' : {'dice' : 'dice'}
-            };
-            
-            let request = $.ajax(oData);
+
+                
+            });
 
             request.fail( function(jqXHR) {
                 //Ngt har gått fel...
                 console.log(jqXHR, jqXHR.status, jqXHR.statusText);
             });
 
-            request.done( function(data) {
+            request.done( function(inData) {
                 //Här funkar det bättre...
                 //Här modifierar ni DOM:en baserat på vad servern har skickat
                 //tillbaka i inkommande "data".
-                console.log(data);
+                console.log(inData);
+                $.each(inData, function(data_index, data_data) {
+                    console.log(data_index, data_data);
+                    //Utmaning! För befintliga img-element ersätt src-attributet med det som finns i data_data.
+                    $(data_data).appendTo('body');
+                });
             }); 
-
+            
 
             oGameData.randomDiceNumbers();
 
