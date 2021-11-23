@@ -152,7 +152,6 @@ $(document).ready(function() {
                     imgRef.css({'height' : height + 'px'})
                     imgRef.css({'width' : width + 'px'})
                     
-    
                     console.log(height, width);
     
                     imgRef.css({'z-index' : oGameData.antalSpoken, 'cursor' : 'crosshair'});    
