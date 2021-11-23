@@ -1,0 +1,144 @@
+
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>jQuery Mobile F5</title>
+        <meta charset="utf-8" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+
+        <style>
+            img {
+                width: 35%;
+                height: 35%;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div data-role="page" id="firstDice">
+
+            <div data-role="header">
+                <h1>First dice</h1>
+            </div>
+        
+            <div role="main" class="ui-content">
+                <img src="https://openclipart.org/download/282127/Die1.svg" alt="Dice_1" />
+                <a href="#secondDice" class="ui-btn">Second dice</a>
+
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#secondDice">Second dice</a></li>
+                        <li><a href="#thirdDice">Third dice</a></li>
+                        <li><a href="#fourthDice">Fourth dice</a></li>
+                        <li><a href="#fifthDice">Fifth dice</a></li>
+                        <li><a href="#sixthDice">Sixth dice</a></li>
+                        <li><a href="#firstDice">First dice</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        
+            <div data-role="footer">
+                <h4>First dice</h4>
+            </div>
+        </div>
+
+        <div data-role="page" id="secondDice">
+
+            <div data-role="header">
+                <h1>Second dice</h1>
+            </div>
+        
+            <div role="main" class="ui-content">
+                <img src="https://openclipart.org/download/282128/Die2.svg" alt="Dice_2" />
+                <a href="#thirdDice" class="ui-btn">Third dice</a>
+
+                <div>
+                    <ul data-role="listview">
+                        <li><a href="#secondDice">Second dice</a></li>
+                        <li><a href="#thirdDice">Third dice</a></li>
+                        <li><a href="#fourthDice">Fourth dice</a></li>
+                        <li><a href="#fifthDice">Fifth dice</a></li>
+                        <li><a href="#sixthDice">Sixth dice</a></li>
+                        <li><a href="#firstDice">First dice</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        
+            <div data-role="footer">
+                <h4>Second dice</h4>
+            </div>
+        </div>
+
+        <div data-role="page" id="thirdDice">
+
+            <div data-role="header">
+                <h1>Third dice</h1>
+            </div>
+        
+            <div role="main" class="ui-content">
+                <img src="https://openclipart.org/download/282129/Die3.svg" alt="Dice_3" />
+                <a href="#fourthDice" class="ui-btn">Fourth dice</a>
+            </div>
+        
+            <div data-role="footer">
+                <h4>Third dice</h4>
+            </div>
+        </div>
+
+        <div data-role="page" id="fourthDice">
+
+            <div data-role="header">
+                <h1>Fourth dice</h1>
+            </div>
+        
+            <div role="main" class="ui-content">
+                <img src="https://openclipart.org/download/282130/Die4.svg" alt="Dice_4" />
+                <a href="#fifthDice" class="ui-btn">Fifth dice</a>
+            </div>
+        
+            <div data-role="footer">
+                <h4>Fourth dice</h4>
+            </div>
+        </div>
+
+        <div data-role="page" id="fifthDice">
+
+            <div data-role="header">
+                <h1>Fifth dice</h1>
+            </div>
+        
+            <div role="main" class="ui-content">
+                <img src="https://openclipart.org/download/282131/Die5.svg" alt="Dice_5" />
+                <a href="#sixthDice" class="ui-btn">Sixth dice</a>
+            </div>
+        
+            <div data-role="footer">
+                <h4>Fifth dice</h4>
+            </div>
+        </div>
+
+        <div data-role="page" id="sixthDice">
+
+            <div data-role="header">
+                <h1>Sixth dice</h1>
+            </div>
+        
+            <div role="main" class="ui-content">
+                <img src="https://openclipart.org/download/282132/Die6.svg" alt="Dice_6" />
+                <a href="#firstDice" class="ui-btn">first dice</a>
+            </div>
+        
+            <div data-role="footer">
+                <h4>Sixth dice</h4>
+            </div>
+        </div>
+
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    </body>
+</html>
