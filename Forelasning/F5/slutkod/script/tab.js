@@ -3,9 +3,9 @@
 $(document).ready( function () {
 
     console.log('ready');
-    $('#tabs').tabs();
+    //$('#tabs').tabs();
 
-    //$("#tab").tabs({event : "mouseover"});
+    $("#tabs").tabs({event : "mouseover"});
 
 
 });
