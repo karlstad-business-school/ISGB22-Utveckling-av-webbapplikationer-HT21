@@ -16,12 +16,17 @@
             $password = "";
 
             //Koppla upp mot DBHS mot given DB med användare och lösenord
-            $dbh = new PDO($dns, $username, $password);
+            //try {
+                $dbh = new PDO($dns, $username, $password);
+            /*} catch(PDOException $e) {
+                echo($e->getMessage());
+            }*/
             
             echo("<p>Japp det fungerar!</p>");
             
             //Skapa en SQL-sats och observera att den är utan villkor!
             //$sql = "SELECT * FROM cars;";
+
 
             $sql = "SELECT * FROM cars WHERE fabrikat = :fabrikat AND farg != :farg;";
 
