@@ -11,7 +11,40 @@
         /*
             Utgå från lösningen i cookies.php och översätt den till att istället använda sessioner.
         */
+        
+        //OBSERVERA alltid först när ni vill använda sessioner --> session_start()
 
+        session_start();
+
+        //Fortfarande isset() för att kontrollera om en varibel/index i array existerar och har ett värde!
+        if(isset($_SESSION["summa"]) && isset($_SESSION["antal"])) {
+            $antal = $_SESSION["antal"];
+            $summa = $_SESSION["summa"];
+        }
+
+        for($i = 1; $i <= 6; $i++) {
+            $slumptal = rand(1, 6);
+            $stringToEcho .= IMG . (26 + $slumptal) 
+                . "/Die" . $slumptal 
+                . ".svg' alt='Tärning " . $slumptal 
+                . "' />" . PHP_EOL;
+            $summa += $slumptal;
+        }
+
+        $antal++;
+
+        $stringToEcho .= "<p>Summan blev $summa!</p>";
+        $stringToEcho .= "<p>Antalet gånger du kastat de 6 tärningarna är $antal!</p>";
+
+
+        if($summa >= 100) {
+            $summa = 0;
+            $antal = 0;
+            $stringToEcho .= "<p>För nytt spel tryck på 'Skicka'!</p>";
+        }
+
+        $_SESSION["antal"] = $antal;
+        $_SESSION["summa"] = $summa;
     }
 
     if(isset($_POST["rensa"])) {
