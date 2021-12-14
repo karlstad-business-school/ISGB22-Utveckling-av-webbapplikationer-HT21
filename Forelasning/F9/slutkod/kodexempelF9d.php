@@ -5,6 +5,23 @@
 
     if( isset( $_POST["skicka"] ) ) {
 
+        session_start();
+        session_regenerate_id(true);
+
+        if(isset($_SESSION["antal"])){
+            $antal = $_SESSION["antal"];
+        }
+
+        $antal++;
+        $_SESSION["antal"] = $antal;
+
+        //Test
+        //$_SESSION["namn"] = "Fia";
+        //$_SESSION["efternamn"] = "Karlsson";
+        //$_SESSION["kurskod"] = "ISGB02";
+
+        $stringToEcho = "Du har nu tryckt $antal gånger på knappen!";
+
     }
 
     if(isset($_POST["rensa"])) {
