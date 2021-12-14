@@ -59,9 +59,10 @@
 
             ?>
 
-            <a href="<?php echo($_SERVER["PHP_SELF"] 
-                . "?skicka=skicka&summa=$summa&antal=$antal"); ?>" class="btn btn-primary">Skicka</a>
-            <a href="<?php echo($_SERVER["PHP_SELF"]); ?>" class="btn btn-secondary">Rensa</a>
+            <a href="<?php echo($_SERVER["PHP_SELF"] . "?skicka=skicka&summa=$summa&antal=$antal"); ?>" 
+                class="btn btn-primary">Skicka</a>
+            <a href="<?php echo($_SERVER["PHP_SELF"]); ?>" 
+                class="btn btn-secondary">Rensa</a>
         </main>
 
     </body>

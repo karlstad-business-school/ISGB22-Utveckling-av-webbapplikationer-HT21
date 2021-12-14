@@ -51,7 +51,7 @@
 
     <body class="container p-2">
         <header class="jumbotron text-center">
-            <h1>PHP F9 - äkna antalet klick på knappen "Skicka"!</h1>
+            <h1>PHP F9 - Räkna antalet klick på knappen "Skicka"!</h1>
         </header>
 
         <main>    
