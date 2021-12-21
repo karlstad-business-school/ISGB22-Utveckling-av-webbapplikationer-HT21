@@ -59,7 +59,7 @@
             $farg = $_POST["farg"];
             $mil = $_POST["mil"];
 
-            $dns = "mysql:host=localhost;dbname=car;charset=utf8";
+            $dns = "mysql:host=localhost;dbname=bil;charset=utf8";
             $userName = "root";
             $password = "";
 
@@ -88,7 +88,7 @@
     function listCarData() {
         try {
 
-            $dns = "mysql:host=localhost;dbname=car;charset=utf8";
+            $dns = "mysql:host=localhost;dbname=bil;charset=utf8";
             $userName = "root";
             $password = "";
 
