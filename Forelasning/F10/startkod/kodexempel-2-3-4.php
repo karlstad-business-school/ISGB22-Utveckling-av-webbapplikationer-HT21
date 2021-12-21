@@ -1,70 +1,4 @@
 <?php
-/*
-    define("IMG", "<img src='https://openclipart.org/download/2821");
-
-    $summa = 0;
-    $antal = 0;
-    $stringToEcho = "";
-
-    if( isset( $_POST["skicka"] ) ) {
-
-        session_start();
-
-        if( isset($_SESSION["summa"]) && isset($_SESSION["antal"] ) ) {
-            $summa = $_SESSION["summa"];
-            $antal = $_SESSION["antal"];
-        } 
-            
-        for($i = 1; $i <= 6; $i++) {
-            $slumptal = rand(1, 6);
-            $stringToEcho .= IMG . (26 + $slumptal) . "/Die" . $slumptal . ".svg' alt='Tärning " . $slumptal . "' />" . PHP_EOL;
-            $summa += $slumptal;
-        }
-
-        $antal++;
-
-        $stringToEcho .= "<p>Summan blev: $summa</p>" . PHP_EOL;
-        $stringToEcho .= "<p>Antalet gånger du kastat de 6 tärningarna är: $antal</p>" . PHP_EOL;
-
-        if($summa >= 100) {
-            
-            $summa = 0;
-            $antal = 0;
-
-            $stringToEcho .= "<p>För nytt spel tryck på 'Skicka'!</p>";
-        }
-
-       $_SESSION["summa"] = $summa;
-       $_SESSION["antal"] = $antal;
-
-    }
-
-    if(isset($_POST["rensa"])) {
-
-        session_start();
-
-        if(session_status() === PHP_SESSION_ACTIVE) {
-
-            $_SESSION = array();
-
-            if ( ini_get( "session.use_cookies" ) ) {
-            
-                $sessionCookieData = session_get_cookie_params();
-                
-                $path = $sessionCookieData["path"];
-                $domain = $sessionCookieData["domain"];
-                $secure = $sessionCookieData["secure"];
-                $httponly = $sessionCookieData["httponly"];
-                
-                setcookie( session_name(), "", time() - 3600, $path, $domain, $secure, $httponly );
-            }
-
-            session_destroy();
-        }
-    }
-    */
-
-
     function dbConnect() {
         try {
             $dns = "mysql:dbname=test;host=localhost";
@@ -77,11 +11,6 @@
             throw $e;
         }
     }
-
-
-
-
-
 
 ?>  
 <!DOCTYPE html>
